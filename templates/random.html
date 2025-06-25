@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Name Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .header {
+            min-height: 10vh;
+        }
+        .mid {
+            min-height: 80vh;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+    <div class="header bg-blue-600 text-white flex items-center justify-center p-4 shadow-lg rounded-b-xl">
+        <h1 class="text-3xl md:text-4xl font-extrabold text-center">Welcome To Random Name Generator</h1>
+    </div>
+
+    
+    <div class="mid flex flex-col md:flex-row flex-grow items-center justify-center p-4 md:p-8">
+        
+        <div class="left bg-white p-6 md:p-10 rounded-xl shadow-lg flex flex-col items-center justify-center text-center m-4 w-full md:w-1/2 lg:w-2/5 xl:w-1/3 min-h-[300px]">
+            <h3 class="text-2xl font-semibold text-gray-800 mb-6">Generate Random Name</h3>
+            <button
+                type="button"
+                id="generate-btn"
+                class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105">
+                Generate Name
+            </button>
+        </div>
+
+        
+        <div class="right bg-white p-6 md:p-10 rounded-xl shadow-lg flex flex-col items-center justify-center text-center m-4 w-full md:w-1/2 lg:w-2/5 xl:w-1/3 min-h-[300px]">
+            <h1 class="text-3xl font-extrabold text-gray-800">Your Generated Name</h1>
+            <p id="generated-name" class="text-2xl text-purple-600 mt-6">Click the button to generate!</p>
+        </div>
+    </div>
+
+    
+    <script>
+        document.getElementById("generate-btn").addEventListener("click", () => {
+            fetch("/random")
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("generated-name").innerText = data.name;
+                })
+                .catch(error => {
+                    document.getElementById("generated-name").innerText = "Error fetching name.";
+                    console.error("Fetch error:", error);
+                });
+        });
+    </script>
+</body>
+</html>

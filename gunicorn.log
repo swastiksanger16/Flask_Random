@@ -1,0 +1,6 @@
+nohup: ignoring input
+[2025-06-25 19:12:56 +0000] [2912] [INFO] Starting gunicorn 23.0.0
+[2025-06-25 19:12:56 +0000] [2912] [INFO] Listening at: http://127.0.0.1:8000 (2912)
+[2025-06-25 19:12:56 +0000] [2912] [INFO] Using worker: sync
+[2025-06-25 19:12:56 +0000] [2913] [INFO] Booting worker with pid: 2913
+[2025-06-25 19:12:56 +0000] [2914] [INFO] Booting worker with pid: 2914
